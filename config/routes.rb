@@ -14,10 +14,10 @@ Rails.application.routes.draw do
   get 'customers/withdrawal'  => 'customers#withdrawal'
   delete 'cart_items/destroy_all'  => 'cart_items#destroy_all'
   resources :cart_items,only:[:index,:update,:show,:create,:destroy]
-  post 'orders/confirm' => 'orders#confirm'#post
+  post 'orders/confirm' => 'orders#confirm'
   get 'orders/complete' => 'orders#complete'
   resources :orders,only:[:index,:show,:create,:new]
-  
+  resources :addresses ,only:[:index,:edit,:create,:update,:destroy]
   
   
  end
@@ -26,7 +26,13 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
   namespace :admin do
-    root to: "homes#top"
+  root to: "homes#top"
+  resources :items,only:[:index,:new,:edit,:create,:show,:update,]
+  resources :genres,only:[:index,:edit,:create,:update,]
+  resources :customers,only:[:index,:show,:edit,:update]
+  resources :orders,only:[:show,:update]
+  resources :order_items,only:[:update]
+    
     
   end
   
