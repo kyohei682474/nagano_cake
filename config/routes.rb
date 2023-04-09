@@ -7,6 +7,18 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get 'homes/about' => 'homes#about',as: 'about'
   resources :items,only: [:index, :show]
+  get 'customers/my_page'=> 'customers#show' 
+  get 'customers/infomation/edit'=> 'customers#edit' 
+  patch 'customers/infomation' => 'customers#update' 
+  get 'customers/unsubscribe' => 'customers#unsubscribe'
+  get 'customers/withdrawal'  => 'customers#withdrawal'
+  delete 'cart_items/destroy_all'  => 'cart_items#destroy_all'
+  resources :cart_items,only:[:index,:update,:show,:create,:destroy]
+  get 'orders/confirm' => 'orders#confirm'#post
+  get 'orders/complete' => 'orders#complete'
+  resources :orders,only:[:index,:show,:create,:new]
+  
+  
   
  end
   
