@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
   namespace :public do
-  root to: "homes#top"
+  root to: 'homes#top'
   get 'homes/about' => 'homes#about',as: 'about'
   resources :items,only: [:index, :show]
   get 'customers/my_page'=> 'customers#show' 
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
   namespace :admin do
-  root to: "homes#top"
+  root to: 'homes#top'
   resources :items,only:[:index,:new,:edit,:create,:show,:update,]
   resources :genres,only:[:index,:edit,:create,:update,]
   resources :customers,only:[:index,:show,:edit,:update]
