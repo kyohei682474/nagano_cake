@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -19,19 +19,19 @@
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          
-          
-          
+
+
+
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
-            
-          
+
+
             <li class="nav-item">
              <%= link_to admin_session, class:'nav-link text-dark' do %>
            <i class="fas fa-home fa-lg" style="color: #edeff2;"></i>
            <i class="text-white ">商品一覧</i>
-            
+
              <% end %>
             </li>
             <li class="nav-item">
@@ -47,31 +47,31 @@
              <% end %>
             </li>
             <li class="nav-item">
-            
+
               <%= link_to admin_session, method: :delete, class: 'nav-link text-dark' do %>
                  <i class="fas fa-sign-out-alt fa-lg" style="color: #f7f7f8;"></i>
                  <i class="text-white ">ジャンル一覧</i>
               <% end %>
-              
-            </li>                  
+
+            </li>
             <li class="nav-item">
-            
+
               <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
                  <i class="fas fa-sign-out-alt fa-lg" style="color: #f7f7f8;"></i>
                  <i class="text-white ">ログアウト</i>
               <% end %>
-              
+
             </li>
-            
-            
+
+
             <% elsif customer_signed_in? %>
-            
-          
+
+
             <li class="nav-item">
              <%= link_to admin_session, class:'nav-link text-dark' do %>
            <i class="fas fa-home fa-lg" style="color: #edeff2;"></i>
            <i class="text-white ">マイページ</i>
-            
+
              <% end %>
             </li>
             <li class="nav-item">
@@ -80,26 +80,26 @@
              <i class="text-white ">商品一覧</i>
              <% end %>
             </li>
-            
+
             <li class="nav-item">
-            
+
               <%= link_to admin_session, method: :delete, class: 'nav-link text-dark' do %>
                  <i class="fas fa-sign-out-alt fa-lg" style="color: #f7f7f8;"></i>
                  <i class="text-white ">カート</i>
               <% end %>
-              
-            </li>                  
+
+            </li>
             <li class="nav-item">
-            
+
               <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
                  <i class="fas fa-sign-out-alt fa-lg" style="color: #f7f7f8;"></i>
                  <i class="text-white ">ログアウト</i>
               <% end %>
-              
+
             </li>
             <% else %>
-            
-            
+
+
             <li class="nav-item">
              <%= link_to  admin_session, class:'nav-link text-dark' do %>
              <i class="text-white ">About</i>
@@ -124,23 +124,23 @@
               <% end %>
             </li>
             <% end %>
-            
-            
-            
-        
+
+
+
+
             </ul>
           </div>
         </div>
       </nav>
     </header>
     <main>
-    
-    
-   
+
+
+
   </main>
-  
+
   <footer>
-    
+
     <%= yield %>
   </footer>
   </body>
