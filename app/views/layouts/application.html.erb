@@ -83,7 +83,7 @@
 
             <li class="nav-item">
 
-              <%= link_to public_cart_item_path , class: 'nav-link text-dark' do %>
+              <%= link_to  public_cart_items_path, class: 'nav-link text-dark' do %>
                  <i class="fas fa-sign-out-alt fa-lg" style="color: #f7f7f8;"></i>
                  <i class="text-white ">カート</i>
               <% end %>
@@ -91,7 +91,7 @@
             </li>
             <li class="nav-item">
 
-              <%= link_to destroy_customer_session_path , method: :delete, class: 'nav-link text-dark' do %>
+              <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
                  <i class="fas fa-sign-out-alt fa-lg" style="color: #f7f7f8;"></i>
                  <i class="text-white ">ログアウト</i>
               <% end %>
