@@ -68,7 +68,7 @@
 
 
             <li class="nav-item">
-             <%= link_to admin_session, class:'nav-link text-dark' do %>
+             <%= link_to public_customers_my_page_path, class:'nav-link text-dark' do %>
            <i class="fas fa-home fa-lg" style="color: #edeff2;"></i>
            <i class="text-white ">マイページ</i>
 
@@ -83,7 +83,7 @@
 
             <li class="nav-item">
 
-              <%= link_to admin_session, method: :delete, class: 'nav-link text-dark' do %>
+              <%= link_to public_cart_item_path , class: 'nav-link text-dark' do %>
                  <i class="fas fa-sign-out-alt fa-lg" style="color: #f7f7f8;"></i>
                  <i class="text-white ">カート</i>
               <% end %>
@@ -91,7 +91,7 @@
             </li>
             <li class="nav-item">
 
-              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+              <%= link_to destroy_customer_session_path , method: :delete, class: 'nav-link text-dark' do %>
                  <i class="fas fa-sign-out-alt fa-lg" style="color: #f7f7f8;"></i>
                  <i class="text-white ">ログアウト</i>
               <% end %>
@@ -101,24 +101,24 @@
 
 
             <li class="nav-item">
-             <%= link_to  admin_session, class:'nav-link text-dark' do %>
+             <%= link_to  public_about_path, class:'nav-link text-dark' do %>
              <i class="text-white ">About</i>
              <% end %>
             </li>
             <li class="nav-item">
-             <%= link_to  admin_session, class:'nav-link text-dark' do %>
+             <%= link_to  public_items_path, class:'nav-link text-dark' do %>
              <i class="fas fa-link fa-lg" style="color: #efeff1;"></i>
              <i class="text-white ">商品一覧</i>
              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to admin_session, class:'nav-link text-dark' do %>
+              <%= link_to new_customer_registration_path, class:'nav-link text-dark' do %>
                <i class="fas fa-user-plus fa-lg" style="color: #f2f2f3;"></i>
                <i class="text-white ">新規登録</i>
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to admin_session,class:'nav-link text-dark' do %>
+              <%= link_to new_customer_session_path,class:'nav-link text-dark' do %>
               <i class="fas fa-sign-in-alt fa-lg" style="color: #f0f2f5;"></i>
               <i class="text-white ">ログイン</i>
               <% end %>
