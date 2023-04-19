@@ -1,6 +1,9 @@
 顧客の詳細ページ マイページ
-<h2>タイトル</h2>
-<p><%= @customer.name %></p>
 
-<h2>本文</h2>
-<p><%= @customer.first_name %></p>
+
+
+<h2>氏名</h2>
+<p><%= @customer.last_name %><%= @customer.first_name %></p>
+
+<h2>カナ</h2>
+<p><%= @customer.last_name_kana %><%= @customer.first_name_kana %></p>
