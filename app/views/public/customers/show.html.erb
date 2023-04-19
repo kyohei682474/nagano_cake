@@ -1,9 +1,38 @@
 顧客の詳細ページ マイページ
 
+情報登録
+
+<table class="table table-bordered w-50 "style="margin-left: 20px">
+
+     <tr>
+         <td class="col-4">氏名</td>
+         <td class="col-4"><%= @customer.last_name %><%= @customer.first_name %></td>
+     </tr>
+
+      <tr>
+         <td class="col-4">かな</td>
+         <td class="col-4"><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+     </tr>
+
+      <tr>
+         <td class="col-4">郵便番号</td>
+         <td class="col-4"><%= @customer.last_name %><%= @customer.postal_code %></td>
+     </tr>
+
+     <tr>
+         <td class="col-4">住所</td>
+         <td class="col-4"><%= @customer.address %></td>
+     </tr>
+
+     <tr>
+         <td class="col-4">電話番号</td>
+         <td class="col-4"><%= @customer.telephone_number %></td>
+     </tr>
+
+      <tr>
+         <td class="col-4">メールアドレス</td>
+         <td class="col-4"><%= @customer.email%></td>
+     </tr>
 
 
-<h2>氏名</h2>
-<p><%= @customer.last_name %><%= @customer.first_name %></p>
-
-<h2>カナ</h2>
-<p><%= @customer.last_name_kana %><%= @customer.first_name_kana %></p>
+</table>
