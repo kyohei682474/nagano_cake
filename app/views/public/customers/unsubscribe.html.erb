@@ -1,1 +1,8 @@
 顧客退会画面
+
+<div class="customer-edit">
+    <% if customer_signed_in? && @customer == current_customer %>
+        <%= link_to "退会する",  public_customers_withdrawal_path, class: "user-edit-btn" %>
+        <%= link_to "退会する",  public_customers_withdrawal_path, class: "user-edit-btn" %>
+    <% end %>
+  </div>

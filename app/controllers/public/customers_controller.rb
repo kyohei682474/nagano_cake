@@ -9,9 +9,13 @@ class Public::CustomersController < ApplicationController
     end
 
     def update
+        customer = current_customer
+        customer.update(current_customer)
+        redirect_to  public_customers_my_page_path
     end
 
     def unsubscribe
+        @customer = current_customer
     end
 
     def withdrawal
