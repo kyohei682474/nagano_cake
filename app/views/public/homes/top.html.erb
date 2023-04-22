@@ -1,4 +1,8 @@
- <body>
+<% flash.each do |message_type, message| %>
+　　<div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
+<body>
     <div class="container">
       <div class="row">
        <div class="mx-auto col-11 col-sm-11 col-lg8 col-lx-6">
