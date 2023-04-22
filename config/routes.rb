@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :addresses ,only:[:index,:edit,:create,:update,:destroy]
   
   
+  
  end
   
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
