@@ -1,1 +1,6 @@
-管理者商品新規登録画面
+商品新規登録画面
+
+<%= form_with model: @item, url: admin_items_path, method: :patch do |f| %>
+<%= f.text_field :name %>
+<%= f.submit '編集内容を保存' ,class:"btn btn-success w-45" %>
+<% end %>

@@ -12,7 +12,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
-s
+
   # POST /resource
   # def create
   #   super
