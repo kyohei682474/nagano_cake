@@ -1,9 +1,10 @@
 class Admin::ItemsController < ApplicationController
     def index
-　　　　@item = Item.new
+        @item = Item.new
     end
 
     def new
+        @item = Item.new
     end
 
     def edit
@@ -11,8 +12,14 @@ class Admin::ItemsController < ApplicationController
     end
 
     def create
-
+         item = Item.new(item_params)
+    # 3. データをデータベースに保存するためのsaveメソッド実行
+         item.save
+    # 4. トップ画面へリダイレクト
+         redirect_to '/admin'
     end
+
+
 
     def show
 
@@ -20,5 +27,11 @@ class Admin::ItemsController < ApplicationController
 
     def update
 
+
     end
+
+    private
+  def item_params
+    params.require(:item).permit(:name, :introduction, :image, :price, :genre_id,:is_active)
+  end
 end

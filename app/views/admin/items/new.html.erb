@@ -1,6 +1,20 @@
 商品新規登録画面
 
-<%= form_with model: @item, url: admin_items_path, method: :patch do |f| %>
-<%= f.text_field :name %>
-<%= f.submit '編集内容を保存' ,class:"btn btn-success w-45" %>
+<%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+
+
+  <h4>画像</h4>
+<p><%= f.file_field :image, accept: "image/*" %></p>
+<h4>商品名<h4>
+<p><%= f.text_field :name %></p>
+<h4>商品説明</h4>
+<p><%= f.text_area :introduction %></p>
+<h4><%= f.label "ジャンル選択" %></h4>
+<p><%= f.select :genre_id, [['--選択してください--',0],['和菓子',1],['焼き菓子',2],['洋菓子',3]], { include_blank: true, selected: 0 } %></p>
+<h4>税抜き価格</h4>
+<p><%= f.text_field :price %>円</p>
+<h4><%= f.label "販売ステータス" %></h4>
+<%= f.check_box :is_active %><%= f.label :is_active, "販売中" %>
+<%= f.check_box :is_active %><%= f.label :is_active, "販売停止" %>
+<p><%= f.submit '新規登録' ,class:"btn btn-success w-45" %></p>
 <% end %>
