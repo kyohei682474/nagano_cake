@@ -1,6 +1,7 @@
 class Admin::ItemsController < ApplicationController
     def index
         @items = Item.all
+
     end
 
     def new
@@ -9,11 +10,12 @@ class Admin::ItemsController < ApplicationController
 
     def edit
 
+
     end
 
     def create
          item = Item.new(item_params)
-    # 3. データをデータベースに保存するためのsaveメソッド実行
+
          item.save
     # 4. トップ画面へリダイレクト
          redirect_to '/admin'

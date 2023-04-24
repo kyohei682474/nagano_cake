@@ -1,1 +1,13 @@
 管理者ジャンル編集画面
+
+<%= form_with model: @genre, url: admin_genre_path, method: :patch  do |f| %>
+
+
+  <h4>ジャンル</h4>
+  <%= f.text_field :name %>
+
+
+
+  <%= f.submit '変更を保存' %>
+
+<% end %>
