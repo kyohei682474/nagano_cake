@@ -5,7 +5,7 @@
    <td class="col-4">商品</td>
 
   <% if @item.image.attached? %>
-  <td>  <%= image_tag item.image, size: "200x200" %>
+  <td>  <%= image_tag @item.image, size: "200x200" %>
   <% else %>
     <%= image_tag 'no_image', size: "200x200" %>
   <% end %></td>
