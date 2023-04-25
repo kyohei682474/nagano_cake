@@ -4,7 +4,7 @@
 
 
   <h4>画像</h4>
-<p><%= f.file_field :image, accept: "image/*" %></p>
+<%= image_tag item.image, size: "200x200" %>
 <h4>商品名<h4>
 <p><%= f.text_field :name %></p>
 <h4>商品説明</h4>
