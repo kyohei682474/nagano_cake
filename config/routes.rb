@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   scope module:  :public do
   root to: 'homes#top'
   get 'homes/about' => 'homes#about',as: 'about'
-  resources :items,only: [:index, :show,:edit,:new]
+  resources :items,only: [:index, :show,:edit,:new,]
   get 'customers/my_page'=> 'customers#show'
   get 'customers/infomation/edit'=> 'customers#edit'
   patch 'customers/infomation' => 'customers#update'
