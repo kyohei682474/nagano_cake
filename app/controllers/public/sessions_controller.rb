@@ -39,10 +39,10 @@ def customer_state
       flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
       redirect_to '/customers/sign_in'
     ## 【処理内容3】
-    
-      else
 
-     
+  else
+
+
 
 
   end
