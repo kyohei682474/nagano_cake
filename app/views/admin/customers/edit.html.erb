@@ -1,1 +1,57 @@
-管理者　顧客編集画面
+
+<%= form_with model: @customer, url:  admin_customer_path, method: :patch do |f| %>
+
+<h5 class="fs-1" style= "margin-left: 70px; background-color:#adb5bd; width: 265px;"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h5>
+
+<table class="table w-53 "style="margin-left: 50px ">
+     <tr>
+         <td class="col-2">会員ID</td>
+         <td class="col-3"><%= @customer.id %></td>
+     </tr>
+
+     <tr>
+         <td class="col-2">氏名</td>
+         <td class="col-3"><%= f.text_field :last_name %></td>
+         <td class="col-3"><%= f.text_field :first_name %></td>
+     </tr>
+
+      <tr>
+         <td class="col-2">フリガナ</td>
+         <td class="col-3"><%= f.text_field :last_name_kana %></td>
+         <td class="col-3"><%= f.text_field :first_name_kana %></td>
+     </tr>
+
+     <tr>
+         <td class="col-2">郵便番号</td>
+         <td class="col-3"><%= f.text_field :postal_code %></td>
+         <td class="col-3"></td>
+     </tr>
+
+　　 <tr>
+         <td class="col-2">住所</td>
+         <td class="col-3"><%= f.text_field :address,:size=>"40" %></td>
+     </tr>
+
+      <tr>
+         <td class="col-2">電話番号</td>
+         <td class="col-3"><%= f.text_field :telephone_number%></td>
+     </tr>
+
+      <tr>
+         <td class="col-2">メールアドレス</td>
+         <td class="col-3"><%= f.text_field :email%></td>
+     </tr>
+
+      <tr>
+         <td class="col-2">会員ステータス</td>
+         <td class="col-3"><%= f.check_box :is_deleted,{},true%><%= f.label :is_deleted, '販売中' %>
+                           <%= f.check_box :is_deleted,{},false %><%= f.label :is_deleted, "販売停止" %></td>
+      </tr>
+
+      <tr>
+         <td class="col-2"></td>
+         <td class="col-3"><%= f.submit '編集内容を保存' ,class:"btn btn-success w-45" %></td>
+     </tr>
+</table>
+
+<% end %>

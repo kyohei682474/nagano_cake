@@ -1,1 +1,22 @@
-publicの一覧ページ
+publicの商品一覧ページ
+
+<div class="container">
+ <div class="row">
+<% @items.each do |item| %>
+  <div class="col">
+      <div><% if item.image.attached? %>
+        <%= image_tag item.image, size: "200x200" %>
+           <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+           <% end %></div>
+
+      <div><%= item.name %></div>
+      <div><%= item.price %>円</div>
+  </div>
+
+<% end %>
+</div>
+
+
+ </div>
+<%= paginate @items %>

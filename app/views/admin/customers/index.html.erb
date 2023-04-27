@@ -15,7 +15,7 @@
 <table class="table w-53 "style="margin-left: 50px ">
      <tr>
          <td class="col-2"><%= customer.id %></td>
-         <td class="col-3"><%= link_to customer.last_name  ,admin_customer_path(customer.id)  %><%= link_to customer.first_name ,admin_customer_path(customer.id)  %></td>
+         <td class="col-3"><%= link_to customer.last_name+customer.first_name  ,admin_customer_path(customer.id)  %>
          <td class="col-5"><%= customer.email %></td>
          <td class="col-5"><% if customer.is_deleted %>
                             <p class="text-success">有効</p>

@@ -59,9 +59,16 @@
                            <% else %>
                               退会
                            <% end %></td>
-     </td></td>
+
      <td></td>
     </tr>
 
+
+     <tr>
+     <td></td>
+     <td><%= link_to "編集する", edit_admin_customer_path, method: :get, class:'btn btn-success' %></td>
+     <td><%= link_to "注文一覧を見る",  admin_root_path, method: :get, class:'btn btn-success' %></td>
+     <td></td>
+    </tr>
 
 </table>
