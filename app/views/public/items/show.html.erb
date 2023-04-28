@@ -1,1 +1,11 @@
-閲覧者の詳細ページ
+の詳細ページ
+
+<h2>画像</h2>
+<p><%= image_tag @item.image ,size: "200x200" %></p>
+<p><%= @item.name %></p>
+<p><%= @item.introduction %></p>
+<p><%= (@item.price*1.1).floor %>円</p>
+
+<%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+<p><%= f.select :genre_id, [['--選択してください--',0],['和菓子',1],['焼き菓子',2],['洋菓子',3]], { include_blank: true, selected: 0 } %></p>
+
