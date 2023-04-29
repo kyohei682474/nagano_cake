@@ -8,5 +8,6 @@
 
 <%= form_with model:@cart_item , url:cart_items_path, method: :post do |f| %>
 <p><%= f.select :amount, [['--選択してください--',0],['1',1],['2',2],['3',3]], { include_blank: true, selected: 0 } %></p>
+   <%= f.hidden_field :item_id, :value => @item.id %>
 <p><%= f.submit 'カートに入れる' ,class:"btn btn-success w-45" %></p>
 <% end %>
