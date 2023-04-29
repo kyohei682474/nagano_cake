@@ -6,6 +6,7 @@
 <p><%= @item.introduction %></p>
 <p><%= (@item.price*1.1).floor %>円</p>
 
-<%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
-<p><%= f.select :genre_id, [['--選択してください--',0],['和菓子',1],['焼き菓子',2],['洋菓子',3]], { include_blank: true, selected: 0 } %></p>
-
+<%= form_with model:@cart_item , url:cart_items_path, method: :post do |f| %>
+<p><%= f.select :amount, [['--選択してください--',0],['1',1],['2',2],['3',3]], { include_blank: true, selected: 0 } %></p>
+<p><%= f.submit 'カートに入れる' ,class:"btn btn-success w-45" %></p>
+<% end %>
