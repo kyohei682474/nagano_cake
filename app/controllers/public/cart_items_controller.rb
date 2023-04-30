@@ -25,10 +25,14 @@ class Public::CartItemsController < ApplicationController
     def destroy
         cart_item  = CartItem.find(params[:id])  # データ（レコード）を1件取得
         cart_item.destroy  # データ（レコード）を削除
-        redirect_to cart_items_path# 投稿一覧画面へリダイレクト  
+        redirect_to cart_items_path# 投稿一覧画面へリダイレクト
     end
 
     def destroy_all
+        cart_items = CartItem.all
+        cart_items.destroy_all
+        redirect_to cart_items_path
+
     end
 
 

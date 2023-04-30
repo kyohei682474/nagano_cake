@@ -4,7 +4,13 @@
 
 <% @cart_items.each do |cart_item| %>
   <table class="table table-bordered w-50 "style="margin-left: 50px">
-
+       <tr>
+         <td class="col-4"></td>
+         <td class="col-4"></td>
+         <td class="col-4"></td>
+         <td class="col-4"></td>
+         <td class="col-4"><%= link_to 'カートを空にする', cart_items_destroy_all_path(cart_item.id), method: :delete %></td>
+     </tr>
      <tr>
          <td class="col-4">商品名</td>
          <td class="col-4">単価(税込)</td>
@@ -35,3 +41,5 @@
 </table>
 
 <% end %>
+
+<p><%= link_to '買い物を続ける', items_path, method: :get %></p>
