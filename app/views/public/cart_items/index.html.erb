@@ -20,8 +20,8 @@
         <%= f.select :amount, options_for_select(0..10, {selected: cart_item.amount.to_i} )%>
         <%= f.submit '変更' ,class:"btn btn-success w-45" %>
         <% end %></td>
-
-         <td class="col-4"><%= cart_item.subtotal %></td>
+          <td class="col-4"><%= cart_item.subtotal %></td>
+          <td class="col-4"><%= link_to '削除',cart_item_path(cart_item.id), method: :delete %></td>
 
      </tr>
 
