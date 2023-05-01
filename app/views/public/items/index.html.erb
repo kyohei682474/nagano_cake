@@ -4,11 +4,14 @@ publicの商品一覧ページ
  <div class="row">
 <% @items.each do |item| %>
   <div class="col">
-      <div><% if item.image.attached? %>
+      <div><%= link_to  item_path(item.id) do %>
+          <% if item.image.attached? %>
         <%= image_tag item.image, size: "200x200" %>
            <% else %>
         <%= image_tag 'no_image', size: "200x200" %>
-           <% end %></div>
+           <% end %>
+           <% end %>
+           </div>
 
       <div><%= item.name %></div>
       <div><%= item.price %>円</div>
