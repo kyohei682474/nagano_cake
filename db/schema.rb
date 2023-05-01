@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2023_04_22_123703) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id"
-    t.integer "customer_id"
+    t.integer "c"
     t.integer "amount", null: false
     t.index ["customer_id"], name: "index_cart_items_on_customer_id"
     t.index ["item_id"], name: "index_cart_items_on_item_id"

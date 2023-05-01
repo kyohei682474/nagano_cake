@@ -3,10 +3,20 @@
 <%= form_with model: @order, url: orders_path, method: :post do |f| %>
 
 支払い方法
-<%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-<%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+<p><%= f.radio_button :payment_method, Order.payment_methods.key(0) %></p>
+<p><%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %></p>
 
-<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-<%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+<p><%= f.radio_button :payment_method, Order.payment_methods.key(1) %></p>
+<p><%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%></p>
+
+お届け先
+<p><%= f.radio_button :address, "ご自身の住所" %>
+   <%= f.label :current_customer_address, "ご自身の住所"%>
+   <%= current_customer.address %>
+ </p>
+<%= f.radio_button :address, "登録済み住所からの登録" %>
+   <%= f.label :current_customer_address, "ご自身の住所"%>
+
+
 
 <% end %>
