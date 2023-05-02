@@ -41,13 +41,12 @@ ActiveRecord::Schema.define(version: 2023_04_22_123703) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.integer "customers_id", null: false
+    t.integer "customer_id", null: false
     t.string "name", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customers_id"], name: "index_addresses_on_customers_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -64,7 +63,7 @@ ActiveRecord::Schema.define(version: 2023_04_22_123703) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id"
-    t.integer "c"
+    t.integer "customer_id"
     t.integer "amount", null: false
     t.index ["customer_id"], name: "index_cart_items_on_customer_id"
     t.index ["item_id"], name: "index_cart_items_on_item_id"
@@ -115,7 +114,7 @@ ActiveRecord::Schema.define(version: 2023_04_22_123703) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "customer_id", null: false
     t.integer "status", null: false
     t.integer "payment_method", null: false
     t.integer "amount_billed", null: false
@@ -123,7 +122,6 @@ ActiveRecord::Schema.define(version: 2023_04_22_123703) do
     t.string "delivery_target_postal_code", null: false
     t.string "delivery_address", null: false
     t.string "delivery_target_full_name", null: false
-    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
