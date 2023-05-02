@@ -6,7 +6,9 @@ class Public::OrdersController < ApplicationController
     end
 
     def confirm
-        
+         @order = Order.new(order_params)
+
+
     end
 
     def complete
@@ -19,5 +21,10 @@ class Public::OrdersController < ApplicationController
     end
 
     def index
+    end
+
+    private
+    def order_params
+        params.require(:order).permit(:payment_method, :postal_code, :address, :name)
     end
 end
