@@ -10,8 +10,8 @@
 <p><%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%></p>
 
 お届け先
-<p><%= f.radio_button :current_customer_address, "ご自身の住所" %>
-   <%= f.label :current_customer_address, "ご自身の住所"%>
+<p><%= f.radio_button :select_address,0 %>
+   <%= f.label :select_address, "ご自身の住所"%>
    <%= current_customer.address %>
    <%= current_customer.postal_code %>
    <%= current_customer.last_name %><%= current_customer.first_name %>
@@ -19,13 +19,13 @@
  </p>
 
 
-　　<label class="fz16"><%= radio_button_tag"select_address",1 %>登録済住所から選択</label>
+　　<label class="fz16"><%#= radio_button_tag"select_address",1 %><%= f.radio_button :select_address, 1 %>登録済住所から選択</label>
     <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :address), prompt: "住所を選択してください" %>
 
-　　<%= f.radio_button :current_customer_address, "新しいお届け先" %>
-　　<%= f.text_field :address %>
-　　<%= f.text_field :postal_code %>
-　　<%= f.text_field :name %>
+　　<%= f.radio_button :select_address, 2 %>
+　　<%= f.text_field :delivery_address %>
+　　<%= f.text_field :delivery_target_postal_code %>
+　　<%= f.text_field :delivery_target_full_name%>
 　　 <%= f.submit '確認画面に進む',class:"btn btn-success" %>
 
 

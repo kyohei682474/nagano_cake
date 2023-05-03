@@ -1,2 +1,13 @@
 注文情報確認画面
 
+<%= form_with model: @order, url:  orders_confirm_path, method: :post do |f| %>
+
+<%= order.payment_method　%>
+<%= order.item.image　%>
+<%= order.price_on_order%>
+<%= order.cart_item.item.with_tax_price %>
+<%= order.amount_billed %>
+<%= order.amount_billed %>
+
+
+<%end%>
