@@ -17,7 +17,7 @@ class Admin::ItemsController < ApplicationController
          item = Item.new(item_params)
          item.save
     # 4. トップ画面へリダイレクト
-         redirect_to '/admin'
+         redirect_to   admin_item_path(item.id)
     end
 
 

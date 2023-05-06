@@ -15,7 +15,7 @@
 <p><%= @item.price %>(<%= (@item.price*1.1).floor %>)円</p>
 
 <h2>販売ステータス</h2>
-<p><% if @item.is_active %>
+<p><% if @item.is_active? %>
     <p class="text-success">販売中</p>
    <% else %>
     <p>販売停止</p>

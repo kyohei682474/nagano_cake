@@ -18,9 +18,10 @@
      <tr>
          <td class="col-4"><%= item.id %></td>
          <td class="col-4"><%= item.name %></td>
+         <td class="col-4"><%= item.introduction %></td>
          <td class="col-4"><%= item.price %></td>
          <td class="col-4"><%= item.genre.name %></td>
-         <td class="col-4"><% if item.is_active %>
+         <td class="col-4"><% if item.is_active? %>
                               <p class="text-success">販売中</p>
                                 <% else %>
                                 販売停止
@@ -31,3 +32,4 @@
   </table>
 
 <% end %>
+<%= link_to "新規登録",new_admin_item_path,class:"btn btn-success" %>

@@ -20,8 +20,8 @@
   <p><%= f.text_field :price %>円</p>
 
   <h4><%= f.label "販売ステータス" %></h4>
-    <%= f.check_box :is_active,{},true%><%= f.label :is_active, '販売中' %>
-    <%= f.check_box :is_active,{},false %><%= f.label :is_active, "販売停止" %>
+    <%= f.radio_button :is_active,true %><%= f.label :is_active, '販売中' %>
+    <%= f.radio_button :is_active,false %><%= f.label :is_active, "販売停止" %>
 
   <%= f.submit '保存' %>
 
