@@ -19,7 +19,7 @@ class Public::OrdersController < ApplicationController
          if select_address == '0'
              @order.delivery_target_postal_code = current_customer.postal_code
              @order.delivery_address = current_customer.address
-             @order.delivery_target_full_name = current_customer.first_name + current_customer.last_name
+             @order.delivery_target_full_name = current_customer.last_name + current_customer.first_name
          elsif select_address == '1'
              @address = Address.find(params[:order][:address_id])
              @order.customer_id = current_customer.id
@@ -33,6 +33,7 @@ class Public::OrdersController < ApplicationController
          end
 
          @cart_items = current_customer.cart_items.all
+         @order.customer_id = current_customer.id
 
 
 
@@ -42,11 +43,23 @@ class Public::OrdersController < ApplicationController
     end
 
     def create
-        order = Order.new(order_params)
+     order = Order.new(order_params)
     # 3. データをデータベースに保存するためのsaveメソッド実行
-        order.save
-    # 4. トップ画面へリダイレクト
-        redirect_to '/orders/confirm'
+
+      order.save
+
+      current_customer.cart_items.each do |cart_item|
+      @ordered_detail = OrderDetail.new
+      @ordered_detail.item_id = cart_item.item_id
+      @ordered_detail.amount = cart_item.amount
+      @ordered_detail.with_tax_price = (cart_item.item.price*1.10).floor
+      @ordered_detail.order_id = order.id
+      @ordered_detail.save
+     end
+
+        current_customer.cart_items.destroy_all #カートの中身を削除
+        redirect_to orders_complete_path
+
     end
 
     def show

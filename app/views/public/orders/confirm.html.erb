@@ -5,10 +5,12 @@
   <th>数量</th>
   <th>小計</th>
   </tr>
-   <% total = 0 %> #合計金額total初期化
+   <% total = 0 %>
       <% @cart_items.each do |cart_item| %>
         <tr>
           <td>
+
+           <%= image_tag cart_item.item.get_image %>
 
             <%= cart_item.item.name %>
           </td>
@@ -16,10 +18,10 @@
           <td><%= cart_item.amount %></td>
           <td>
              <% subtotal = ((cart_item.item.price*cart_item.amount)*1.1).to_i %> <!--小計の計算-->
-             <%= subtotal %>#小計を表示
+             <%= subtotal %>
            </td>
          </tr>
-         <% total += (cart_item.item.price*cart_item.amount)*1.1 %> #アイテムごとに合計金額に加算
+         <% total += (cart_item.item.price*cart_item.amount)*1.1 %>
      <% end %>
 </table>
 
@@ -41,7 +43,29 @@
 </table>
 
 
- <%= @order.payment_method %>
- <%= @order.delivery_target_postal_code %>
 
- <%= @order.amount_billed %>
+ <tr>
+  <th>支払い方法</th>
+  <td><%= @order.payment_method_i18n %></td>
+ </tr>
+ <tr>
+   <th>お届け先</th>
+   <td>
+    <%= @order.delivery_target_postal_code %>
+    <%= @order.delivery_address %>
+    <%= @order.delivery_target_full_name %>
+   </td>
+  </tr>
+<div class="row justify-content-center">
+        <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+            <%= f.hidden_field :customer_id %>
+            <%= f.hidden_field :shipping_fee %>
+            <%= f.hidden_field :amount_billed %>
+            <%= f.hidden_field :payment_method %>
+            <%= f.hidden_field :delivery_target_full_name%>
+            <%= f.hidden_field :delivery_address %>
+            <%= f.hidden_field :delivery_target_postal_code %>
+            <%= f.hidden_field :status %>
+            <%= f.submit "注文を確定する", class: "btn btn-success" %>
+        <% end %>
+    </div>
