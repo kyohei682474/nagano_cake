@@ -1,5 +1,14 @@
 注文情報入力画面(支払方法・配送先の選択)
 
+<% if @order.errors.any? %>
+  <%= @order.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @order.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @order, url:  orders_confirm_path, method: :post do |f| %>
 
 支払い方法

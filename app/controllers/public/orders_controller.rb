@@ -9,7 +9,10 @@ class Public::OrdersController < ApplicationController
 
     def confirm
 
-        @order = Order.new(order_params)
+        @order = current_customer.orders.new(order_params)
+
+
+
         #  @address = Address.find(params[:order][:address_id])
         #  @order.delivery_target_postal_code = @address.postal_code
         #  @order.delivery_address = @address.address
@@ -26,14 +29,12 @@ class Public::OrdersController < ApplicationController
              @order.delivery_target_postal_code = @address.postal_code
              @order.delivery_address = @address.address
              @order.delivery_target_full_name =@address.name
-              #puts 'test2'
-              #binding.pry
          elsif select_address == '2'
 
          end
 
          @cart_items = current_customer.cart_items.all
-         @order.customer_id = current_customer.id
+         render :new if @order.invalid?
 
 
 
@@ -43,10 +44,8 @@ class Public::OrdersController < ApplicationController
     end
 
     def create
-     order = Order.new(order_params)
-    # 3. データをデータベースに保存するためのsaveメソッド実行
-
-      order.save
+     order = current_customer.orders.new(order_params)
+     order.save
 
       current_customer.cart_items.each do |cart_item|
       @ordered_detail = OrderDetail.new
@@ -66,10 +65,12 @@ class Public::OrdersController < ApplicationController
     end
 
     def index
+        @orders = current_customer.orders.all
+
     end
 
     private
     def order_params
-        params.require(:order).permit(:payment_method, :delivery_target_postal_code,:current_customer_address,:delivery_address,:delivery_target_full_name)
+        params.require(:order).permit(:payment_method, :delivery_target_postal_code,:current_customer_address,:delivery_address,:delivery_target_full_name, :customer_id, :shipping_fee, :amount_billed, :status)
     end
 end

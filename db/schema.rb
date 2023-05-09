@@ -72,19 +72,19 @@ ActiveRecord::Schema.define(version: 2023_05_07_133756) do
   create_table "customers", force: :cascade do |t|
     t.string "last_name", null: false
     t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
     t.string "email", null: false
     t.string "encrypted_password", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "telephone_number", null: false
+    t.boolean "is_deleted", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_deleted", default: false, null: false
-    t.string "last_name_kana"
-    t.string "first_name_kana"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -107,25 +107,14 @@ ActiveRecord::Schema.define(version: 2023_05_07_133756) do
     t.integer "item_id", null: false
     t.integer "price", null: false
     t.integer "amount", null: false
-    t.integer "making_status", null: false
+    t.integer "making_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "order_items", force: :cascade do |t|
-    t.integer "order_id", null: false
-    t.integer "item_id", null: falsecd
-    t.integer "amount", null: false
-    t.integer "price_on_order", null: false
-    t.integer "making_status", default: 0, null: false
-    t.integer "shipping_fee", null: false
-    t.index ["item_id"], name: "index_order_items_on_item_id"
-    t.index ["order_id"], name: "index_order_items_on_order_id"
-  end
-
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.integer "status", null: false
+    t.integer "status", default: 0, null: false
     t.integer "payment_method", null: false
     t.integer "amount_billed", null: false
     t.integer "shipping_fee", null: false

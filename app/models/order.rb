@@ -10,6 +10,11 @@ class Order < ApplicationRecord
     (price * 1.1).floor
     end
 
+   validates :payment_method, inclusion: {in: Order.payment_methods.keys}
+
+
+
+
 
    def get_image
     unless image.attached?

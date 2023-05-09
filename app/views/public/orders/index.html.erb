@@ -1,1 +1,13 @@
-顧客注文一覧注文履歴画面
+一覧ページ
+
+
+<%# byebug %>
+<% @orders.each do |order| %>
+
+
+
+  　　　<%= order.delivery_address %>
+
+
+
+<% end %>
