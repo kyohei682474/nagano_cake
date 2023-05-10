@@ -1,5 +1,8 @@
 class OrderDetail < ApplicationRecord
     belongs_to :order
+    belongs_to :item
+
+
 
      # with_tax_price属性を追加
   attr_accessor :with_tax_price

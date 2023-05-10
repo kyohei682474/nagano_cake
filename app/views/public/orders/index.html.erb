@@ -2,12 +2,49 @@
 
 
 <%# byebug %>
-<% @orders.each do |order| %>
 
 
 
-  　　　<%= order.delivery_address %>
 
 
 
-<% end %>
+
+
+<table>
+  <tr>
+  <th>注文日</th>
+  <th>配送先</th>
+  <th>注文商品</th>
+  <th>支払い金額</th>
+  <th>ステータス</th>
+  <th>注文</th>
+
+  </tr>
+      <% @orders.each do |order| %>
+        <tr>
+          <td>
+          <%= order.created_at %>
+          </td>
+          <td>
+               <p>〒<%= order.delivery_target_postal_code %>
+               <p><%= order.delivery_address %>
+               <p><%= order.delivery_target_full_name %>
+          </td>
+          <td><% order.order_details.each do |order_detail|%>
+                <%=order_detail.item.name %>
+                <% end %>
+          </td>
+
+          <td>
+            <%= order.amount_billed %>円
+           </td>
+            <td>
+            <%= order.status_i18n %>
+           </td>
+           <td>
+            <%= link_to "注文詳細",order_path(:id),method: :get %>
+           </td>
+         </tr>
+         <%#total += (cart_item.item.price*cart_item.amount)*1.1 %>
+     <% end %>
+</table>

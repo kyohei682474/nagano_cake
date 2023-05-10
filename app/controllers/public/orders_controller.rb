@@ -53,7 +53,7 @@ class Public::OrdersController < ApplicationController
       @ordered_detail.amount = cart_item.amount
       @ordered_detail.with_tax_price = (cart_item.item.price*1.10).floor
       @ordered_detail.order_id = order.id
-      @ordered_detail.save
+      @ordered_detail.save!
      end
 
         current_customer.cart_items.destroy_all #カートの中身を削除
