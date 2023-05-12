@@ -1,1 +1,82 @@
-注文履歴詳細画面
+
+<div class="container">
+ <div class="row">
+  　<div class="col">
+  注文情報
+   <table class="table table-bordered w-50 "style="margin-left: 50px ">
+
+    <tr>
+      <td class="col">注文日</td>
+      <td class="col"><%= @order.created_at %></td>
+    </tr>
+
+
+
+    <tr>
+      <td class="col">配送先<%= @order.delivery_target_postal_code %></td>
+      <td class="col"><p>〒<%= @order.delivery_target_postal_code %></p>
+                 <p>     <%= @order.delivery_address %><%= @order.delivery_target_full_name %></p>
+                 </td>
+    </tr>
+
+    <tr>
+      <td class="col">支払い方法</td>
+      <td class="col"><%=@order.payment_method_i18n %></td>
+    </tr>
+
+    <tr>
+     <td class="col">ステータス</td>
+     <td class="col"><%= @order.status_i18n%></td>
+    </tr>
+
+  </table>
+  </div>
+
+
+
+  <div class="col">
+  <table class="table table-bordered w-50  "style="margin-left: 50px">
+  請求情報
+  <tr>
+   <td class="col">商品合計</td>
+   <td class="col"><%#= @order.order_items.item.cart_item.subtotal %><% @sum = 0 %>
+                      <% @order.order_details.each do |order_detail| %>
+                        <%#= @total= @total+order_detail.sum %>
+                      <% @sum += ((order_detail.item.price)*1.1*order_detail.amount).to_i %>
+                         <%# subtotal = ((order_detail.price*order_detail.amount)*1.1).to_i %> <!--小計の計算-->
+                      <% end %>
+                      <%=  @sum %>円
+                      </td>
+  </tr>
+
+  <tr>
+   <td class="col">配送料</td>
+   <td class="col"><%= @order.shipping_fee %>円</td>
+  </tr>
+
+  <tr>
+   <td class="col">請求額</td>
+   <td class="col"><%= @order.amount_billed %>円</td>
+  </tr>
+
+ </table>
+
+</div>
+注文内容
+<div ="row">
+  <div="col">商品名</div>
+  <div="col">単価(税込)</div>
+  <div="col">個数</div>
+  <div ="col">小計</div>
+</div>
+<div ="row">
+  <div="col"><% @order.order_details.each do |order_detail|%>
+             <%= order_detail.item.name %>
+             <%= order_detail.item.with_tax_price %>円
+             <%= order_detail.amount %>個
+             <%= order_detail.item.with_tax_price*order_detail.amount %>円
+             <% end %></div>
+  </div>
+
+</div>
+

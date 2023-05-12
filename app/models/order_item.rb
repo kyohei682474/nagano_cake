@@ -5,4 +5,5 @@ class OrderItem < ApplicationRecord
     (price * 1.1).floor
  end
 
+  
 end

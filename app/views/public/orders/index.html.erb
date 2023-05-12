@@ -42,7 +42,7 @@
             <%= order.status_i18n %>
            </td>
            <td>
-            <%= link_to "注文詳細",order_path(:id),method: :get %>
+            <%= link_to "注文詳細",order_path(order.id),method: :get %>
            </td>
          </tr>
          <%#total += (cart_item.item.price*cart_item.amount)*1.1 %>

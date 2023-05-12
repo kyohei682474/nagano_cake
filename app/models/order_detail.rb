@@ -12,4 +12,8 @@ class OrderDetail < ApplicationRecord
     self.price = price / 1.1
   end
 
+  #def sum
+   #with_tax_price * amount
+  #end
+
 end

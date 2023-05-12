@@ -13,10 +13,7 @@ class Order < ApplicationRecord
      shipped: 4
      }
 
-
-    def with_tax_price
-    (price * 1.1).floor
-    end
+   
 
    validates :payment_method, inclusion: {in: Order.payment_methods.keys}
 
