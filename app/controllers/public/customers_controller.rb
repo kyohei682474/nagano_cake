@@ -15,14 +15,20 @@ class Public::CustomersController < ApplicationController
     end
 
     def unsubscribe
-        @customer = current_customer
-
+        #@customer = current_customer
+         @customer= Customer.find_by(email: params[:customer][:email])
     end
 
     def withdrawal
-        @customer = current_customer
+        #@customer = current_customer
         # is_deletedカラムをtrueに変更することにより削除フラグを立てる
-        @customer.update(is_deleted: true)
+        #@customer.update(is_deleted: true)
+        #reset_session
+        #flash[:notice] = "退会処理を実行いたしました"
+        #redirect_to root_path
+
+        @customer = Customer.find_by(email: params[:customer][:email])
+        @customer.update(is_deleted: ture)
         reset_session
         flash[:notice] = "退会処理を実行いたしました"
         redirect_to root_path

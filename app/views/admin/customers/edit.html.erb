@@ -44,8 +44,8 @@
 
       <tr>
          <td class="col-2">会員ステータス</td>
-         <td class="col-3"><%= f.check_box :is_deleted,{},true%><%= f.label :is_deleted, '販売中' %>
-                           <%= f.check_box :is_deleted,{},false %><%= f.label :is_deleted, "販売停止" %></td>
+         <td class="col-3"><%= f.check_box :is_deleted,{},true%><%= f.label :is_deleted, '退会' %>
+                           <%= f.check_box :is_deleted,{},false %><%= f.label :is_deleted, "有効" %></td>
       </tr>
 
       <tr>
