@@ -1,1 +1,26 @@
-kannrisha 注文詳細画面(ステータス編集を兼ねる)
+<h2>注文履歴詳細</h2>
+
+<table>
+  <tr>
+   <td>購入者</td>
+   <td><%= @order.customer.last_name+@order.customer.first_name %></td>
+  </tr>
+
+  <tr>
+   <td>注文日</td>
+   <td><%= @order.created_at.strftime('%Y/%m/%d')%></td>
+  </tr>
+
+
+  <tr>
+   <td>配送先</td>
+   <td><p>〒<%= @order.delivery_target_postal_code%><%= @order.delivery_address%></p>
+   <p><%= @order.delivery_target_full_name%></p></td>
+  </tr>
+
+  <tr>
+   <td>支払方法</td>
+   <td><%= @order.payment_method_i18n%></td>
+  </tr>
+
+</table>

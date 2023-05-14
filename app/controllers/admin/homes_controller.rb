@@ -1,6 +1,6 @@
 class Admin::HomesController < ApplicationController
     def top
-        @order_detail = OrderDetail.all
+        @orders = Order.page(params[:page])
     end
 
     def about

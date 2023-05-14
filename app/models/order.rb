@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
-    has_many :order_items, dependent: :destroy
     # has_many :items, dependent: :destroy
     belongs_to :customer
     has_many :order_details, dependent: :destroy
@@ -13,7 +12,7 @@ class Order < ApplicationRecord
      shipped: 4
      }
 
-   
+
 
    validates :payment_method, inclusion: {in: Order.payment_methods.keys}
 

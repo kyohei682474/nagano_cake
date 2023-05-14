@@ -8,25 +8,23 @@
   <table class="table table-bordered w-50 "style="margin-left: 50px">
 
      <tr>
-         <td class="col-4">商品ID</td>
-         <td class="col-4">商品名</td>
-         <td class="col-4">税抜き価格</td>
-         <td class="col-4">ジャンル</td>
-         <td class="col-4">ステータス</td>
+      <td class="col-2">商品ID</td>
+      <td class="col-2">商品名</td>
+      <td class="col-2">価格（税抜）</td>
+      <td class="col-2">ジャンル名</td>
+      <td class="col-2">ステータス</td>
      </tr>
 
      <tr>
-         <td class="col-4"><%= item.id %></td>
-         <td class="col-4"><%= item.name %></td>
-         <td class="col-4"><%= item.introduction %></td>
-         <td class="col-4"><%= item.price %></td>
-         <td class="col-4"><%= item.genre.name %></td>
-         <td class="col-4"><% if item.is_active? %>
-                              <p class="text-success">販売中</p>
-                                <% else %>
-                                販売停止
-                                <% end %>
-                                                  </td>
+      <td class="col-2"><%= item.id %></td>
+      <td class="col-2"><%= item.name %></td>
+      <td class="col-2"><%= item.price %></td>
+      <td class="col-2"><%= item.genre.name %></td>
+      <td class="col-2"><% if item.is_active%>
+                        <p class="text-success">販売中</p>
+                         <% else %>
+                         販売停止中
+                         <% end %></td>
      </tr>
 
   </table>

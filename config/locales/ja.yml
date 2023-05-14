@@ -10,3 +10,8 @@
           production: "製作中"
           shipping_preparation: "発送準備中"
           shipped: "発送完了"
+
+    devise:
+      sessions:
+         signed_in: 'ログインしました。'
+         signed_out: 'ログアウトしました。'

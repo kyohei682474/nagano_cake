@@ -1,0 +1,19 @@
+<h2>注文履歴一覧</h2>
+
+
+<table class="table w-53 "style="margin-left: 50px ">
+     <tr class="table-dark">
+      <td class="col-2">購入日時</td>
+      <td class="col-2">購入者</td>
+      <td class="col-2">注文個数 </td>
+     </tr>
+<% @orders.each do | order| %>
+     <tr>
+      <td class="col-2"><%=  link_to order.created_at.strftime('%Y/%m/%d'), admin_order_path(order.id),method: :get %>
+      <td class="col-2"><%= order.customer.last_name+order.customer.first_name %>様</td>
+      <td class="col-2"><%= order.order_details.sum(:amount) %>個</td>
+     </tr>
+     <% end %>
+</table>
+
+<%= paginate @orders %>
