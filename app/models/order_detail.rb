@@ -11,7 +11,7 @@ class OrderDetail < ApplicationRecord
   def with_tax_price=(price)
     self.price = price / 1.1
   end
-
+  enum making_status: { production_not_allowed: 0, waiting_for_production:1, production:2, production_completed:3}
   #def sum
    #with_tax_price * amount
   #end
