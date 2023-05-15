@@ -33,7 +33,7 @@
       <td><%= f.select :status,Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %></td>
 
 
-      <td><%= f.submit '更新' %></td>
+      <td><%= f.submit '更新',class:'btn btn-success' %></td>
      </tr>
 
 
@@ -56,12 +56,13 @@
       <td><%=order_detail.amount%></td>
       <td><%=order_detail.item.with_tax_price*order_detail.amount %></td>
 
-      <%= form_with model: @order_detail, url: admin_order_path, method: :patch do |f| %>
+      <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
       <td><%#= f.select :making_status, [['制作不可',0],['制作待ち',1],['製作中',2],['制作完了',3]], { include_blank: true, selected: 0 } %></td>
-        <td><%= f.select :making_status,OrderDetail.making_statuses_i18n.keys.map{|k| [I18n.t("enums.order_detail.status.#{k}"), k]} %></td>
+        <td><%= f.select :making_status,OrderDetail.making_statuses.keys.map{|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %></td>
+        <td><%=f.submit"更新",class:'btn btn-success'%></td>
       <%end%>
       <td></td>
-      <td><%=link_to "更新",admin_order_path,method: :patch%></td>
+
      </tr>
     <%end%>
     </table>
