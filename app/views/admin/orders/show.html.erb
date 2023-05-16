@@ -1,35 +1,32 @@
-<h4>注文履歴詳細</h4>
-<div class="container">
- <div class="row">
-  <div class="col">
+<div class=" bg-secondary" style="margin-left: 50px; font-size: 20px;" >注文履歴詳細</div>
 
    <table>
      <tr>
-      <td class="col-2">購入者</td>
+      <td class="col-2 font-weight-bold">購入者</td>
       <td class="col-4"><%= link_to @order.customer.last_name+@order.customer.first_name,admin_order_path(@order.id) %></td>
      </tr>
 
      <tr>
-      <td class="col-2">注文日</td>
+      <td class="col-2 font-weight-bold">注文日</td>
       <td class="col-4"><%= @order.created_at.strftime('%Y/%m/%d')%></td>
      </tr>
 
 
      <tr>
-      <td class="col-2">配送先</td>
+      <td class="col-2 font-weight-bold">配送先</td>
       <td class="col-4"><p>〒<%= @order.delivery_target_postal_code%>
           <%= @order.delivery_address%></p>
           <p><%= @order.delivery_target_full_name%></p></td>
      </tr>
 
      <tr>
-      <td class="col-2">支払方法</td>
+      <td class="col-2 font-weight-bold">支払方法</td>
       <td class="col-4"><%= @order.payment_method_i18n%></td>
      </tr>
 
      <tr>
          <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
-      <td class="col-3">注文ステータス</td>
+      <td class="col-3 font-weight-bold">注文ステータス</td>
       <td class="col-1"><%= f.select :status,Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %></td>
       <td class="col-5"><%= f.submit '更新',class:'btn btn-success' %></td>
      </tr>
@@ -37,15 +34,15 @@
 
      <%end%>
    </table>
-   <div class="col">
+   <div class="col pt-4">
     <table class="table">
-     <tr class"table-dark">
-      <td class"col-2">商品名</td>
-      <td class"col-2">単価（税込）</td>
-      <td class"col-2">数量</td>
-      <td class"col-2">小計</td>
-      <td class"col-2">制作ステータス</td>
-      <td class"col-2"></td>
+     <tr class="table-dark">
+      <td class="col-2 font-weight-bold">商品名</td>
+      <td class="col-3 font-weight-bold">単価（税込）</td>
+      <td class="col-2 font-weight-bold">数量</td>
+      <td class="col-2 font-weight-bold">小計</td>
+      <td class="col-3 font-weight-bold">制作ステータス</td>
+      <td class=></td>
      </tr>
       <tr>
     <% total=0 %>
@@ -87,7 +84,7 @@
        <td></td>
        <td></td>
        <td></td>
-       <td class="ps-1"><%= total.to_i+order_detail.order.shipping_fee%>円</td>
+       <td class="ps-1 font-weight-bold"><%= total.to_i+order_detail.order.shipping_fee%>円</td>
       </tr>
 
       <%end%>
@@ -95,5 +92,3 @@
     <%end%>
     </table>
   </div>
- </div>
-</div>

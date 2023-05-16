@@ -14,10 +14,12 @@ class Admin::ItemsController < ApplicationController
     end
 
     def create
-         item = Item.new(item_params)
-         item.save
-    # 4. トップ画面へリダイレクト
-         redirect_to   admin_item_path(item.id)
+         @item = Item.new(item_params)
+        if @item.save
+         redirect_to   admin_item_path(@item.id)
+        else
+         render :new
+        end
     end
 
 
@@ -32,8 +34,10 @@ class Admin::ItemsController < ApplicationController
         redirect_to admin_item_path
     end
 
-    private
-  def item_params
-    params.require(:item).permit(:name, :introduction, :image, :price, :genre_id,:is_active)
-  end
+  private
+
+   def item_params
+        params.require(:item).permit(:name, :introduction, :image, :price, :genre_id,:is_active)
+   end
+
 end
