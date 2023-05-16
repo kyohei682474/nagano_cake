@@ -6,7 +6,7 @@
    <table>
      <tr>
       <td class="col-2">購入者</td>
-      <td class="col-4"><%= @order.customer.last_name+@order.customer.first_name %></td>
+      <td class="col-4"><%= link_to @order.customer.last_name+@order.customer.first_name,admin_order_path(@order.id) %></td>
      </tr>
 
      <tr>
@@ -60,21 +60,34 @@
         <td class"col-2"><%= f.select :making_status,OrderDetail.making_statuses.keys.map{|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %></td>
         <td class"col-2"><%=f.submit"更新",class:'btn btn-success'%></td>
       </tr>
-
+     </table>
+     <table>
       <tr>
        <% total += (order_detail.item.with_tax_price*order_detail.amount)  %>
-       <td>商品合計</td>
-       <td><%= total.to_i %>円</td>
+       <td class="ps-1">商品合計</td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td class="ps-1"><%= total.to_i %>円</td>
       </tr>
 
        <tr>
-       <td>送料</td>
-       <td><%= total.to_i %>円</td>
+       <td class="ps-1">送料</td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td class="ps-1"><%= order_detail.order.shipping_fee %>円</td>
       </tr>
 
        <tr>
-       <td>請求金額合計</td>
-       <td><%= total.to_i %>円</td>
+       <td class="ps-1">請求金額合計</td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td class="ps-1"><%= total.to_i+order_detail.order.shipping_fee%>円</td>
       </tr>
 
       <%end%>
