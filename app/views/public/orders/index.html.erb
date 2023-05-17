@@ -1,4 +1,4 @@
-一覧ページ
+<div class=" bg-secondary" style="margin-left: 50px; font-size: 20px; width:120px;" >注文履歴一覧</div>
 
 
 <%# byebug %>
@@ -10,7 +10,7 @@
 
 
 
-<table>
+<table class="table table-bordered w-53 "style="margin-left: 50px ">
   <tr>
   <th>注文日</th>
   <th>配送先</th>
@@ -42,7 +42,7 @@
             <%= order.status_i18n %>
            </td>
            <td>
-            <%= link_to "注文詳細",order_path(order.id),method: :get %>
+            <%= link_to "注文詳細",order_path(order.id),method: :get,class:'btn btn-primary'%>
            </td>
          </tr>
          <%#total += (cart_item.item.price*cart_item.amount)*1.1 %>

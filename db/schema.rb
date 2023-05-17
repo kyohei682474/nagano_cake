@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(version: 2023_05_10_094617) do
     t.text "introduction", null: false
     t.integer "price", null: false
     t.boolean "is_active", default: false, null: false
-    t.index ["genre_id"], name: "index_items_on_genre_id"
   end
 
   create_table "order_details", force: :cascade do |t|
