@@ -1,20 +1,16 @@
-publicの商品一覧ページ
+
 
 <div class="container">
+ <h5>商品一覧</h5>
  <div class="row">
 <% @items.each do |item| %>
   <div class="col">
       <div><%= link_to  item_path(item.id) do %>
-          <% if item.image.attached? %>
         <%= image_tag item.image, size: "200x200" %>
-           <% else %>
-        <%= image_tag 'no_image', size: "200x200" %>
-           <% end %>
            <% end %>
            </div>
-
-      <div><%= item.name %></div>
-      <div><%= item.price %>円</div>
+      <div class="font-weight-bold"><%= item.name %></div>
+      <div class="font-weight-bold">¥<%= item.price %>円</div>
   </div>
 
 <% end %>

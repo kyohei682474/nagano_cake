@@ -31,7 +31,7 @@ class Public::CartItemsController < ApplicationController
 		   #current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).save
 		   cart_item.save
 
-			flash[:notice] = "Item was successfully added to cart."
+			flash[:notice] = "商品がカートに追加されました"
 			redirect_to cart_items_path
 
 
