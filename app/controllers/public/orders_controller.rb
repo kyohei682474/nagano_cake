@@ -9,7 +9,8 @@ class Public::OrdersController < ApplicationController
 
     def confirm
 
-        @order = current_customer.orders.new(order_params)
+         @order = current_customer.orders.new(order_params)
+
 
 
 
@@ -75,6 +76,6 @@ class Public::OrdersController < ApplicationController
 
     private
     def order_params
-        params.require(:order).permit(:payment_method, :delivery_target_postal_code,:current_customer_address,:delivery_address,:delivery_target_full_name, :customer_id, :shipping_fee, :amount_billed, :status)
+        params.require(:order).permit(:payment_method, :delivery_target_postal_code,:delivery_address,:delivery_target_full_name, :customer_id, :shipping_fee, :amount_billed, :status)
     end
 end
