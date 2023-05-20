@@ -28,21 +28,17 @@
       </table>
       </div>
 
-
-
-
-
  <div class="col">
-  <table class="table-bordered">
+  <table class="table-bordered w-50">
    <tr>
          <th>送料</th>
           <% @order.shipping_fee = 800 %>
          <td><%= @order.shipping_fee %></td>
-        </tr>
-       <tr>
+   </tr>
+   <tr>
          <th>商品合計</th>
          <td><%= total.to_i %></td>
-        </tr>
+   </tr>
         <tr>
           <th>請求金額</th>
           <% @order.amount_billed = @order.shipping_fee+ total.to_i %>
@@ -63,7 +59,7 @@
    <td>
     <%= @order.delivery_target_postal_code %>
     <%= @order.delivery_address %>
-   
+
    </td>
    <tr>
     <td>
