@@ -17,9 +17,4 @@
           production: "製作中"
           production_completed: "制作完了"
 
-    　:
-      sessions:
-         signed_in: 'ログインしました。'
-         signed_out: 'ログアウトしました。'
-
 
