@@ -1,12 +1,15 @@
-
 <h5 class="fs-1" style= "margin-left: 50px; background-color:#adb5bd; width: 190px;">ショッピングカート</h5>
 
 <div class="container">
- <div class="row">
 
-   <div style="margin-left:980px;">
-   <%= link_to 'カートを空にする',cart_items_destroy_all_path, method: :delete ,class:'btn btn-danger'%>
-   </div>
+
+<% @cart_items.each do |cart_item| %>
+ <div class="row">
+  <table style="margin-left: 970px">
+   <tr>
+    <td><%= link_to 'カートを空にする', cart_items_destroy_all_path(cart_item.id), method: :delete ,class:'btn btn-danger'%></td>
+   </tr>
+  </table>
  </div>
 <div class="row">
   <table class="table table-bordered w-70 "style="margin-left: 50px">
@@ -19,9 +22,6 @@
       <td></td>
      </tr>
 
- <% total=0%>
-<% @cart_items.each do |cart_item| %>
-
      <tr>
       <td><%= cart_item.item.name %></td>
       <td><%= cart_item.item.with_tax_price %></td>
@@ -32,29 +32,20 @@
       <td><%= cart_item.subtotal %></td>
       <td><%= link_to '削除',cart_item_path(cart_item.id), method: :delete,class:'btn btn-danger' %></td>
      </tr>
-
-  <% total += cart_item.subtotal %>
-  <% end %>
-  </table>
- </div>
- <dvi cass="row">
-  <div style="margin-left:90%;">
-  <table class= "table-bordered" style="width:120px;">
-   <tr>
-    <th>合計金額</th>
-    <th>¥<%= total %></th>
-   </tr>
   </table>
 </div>
-</div>
-
 <div class="row">
   <div style="padding-left:50px;"><%= link_to '買い物を続ける', items_path, method: :get ,class:'btn btn-primary'%></div>
  <!--<table class="table table-bordered w-40"style="margin-left: 50px">-->
-
+ <table class="table-bordered" style="width:20%; margin-left: 970px ">
+    <tr>
+     <td><%= cart_item.subtotal %></td>
+     <th>合計金額<% @total +=  cart_item.subtotal %></th>
+    </tr>
+  </table>
 </div>
 
-
+<% end %>
 
 
   <div  style="text-align: center;"><%= link_to '情報を入力する', new_order_path, method: :get,class:'btn btn-success' %></div>
