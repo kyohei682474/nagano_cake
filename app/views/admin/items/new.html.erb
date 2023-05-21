@@ -21,7 +21,8 @@
    <h4>商品説明</h4>
    <p><%= f.text_area :introduction %></p>
    <h4><%= f.label "ジャンル選択" %></h4>
-   <p><%= f.select :genre_id, [['--選択してください--',0],['和菓子',1],['焼き菓子',2],['洋菓子',3]], { include_blank: true, selected: 0 } %></p>
+   <p><%#= f.select :genre_id, [['--選択してください--',0],['和菓子',1],['焼き菓子',2],['洋菓子',3]], { include_blank: true, selected: 0 } %></p>
+   <p><%= f.collection_select :genre_id, Genre.all, :id, :name, options = { include_blank: true, selected: '選択してください' }%></p>
    <h4>税抜き価格</h4>
    <p><%= f.text_field :price %>円</p>
    <h4><%= f.label "販売ステータス" %></h4>
