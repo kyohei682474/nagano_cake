@@ -2,8 +2,17 @@ class Public::OrdersController < ApplicationController
     before_action :authenticate_customer!
 
     def new
-        @order = Order.new
-        @addresses = Address.where(customer_id:current_customer.id)
+        if CartItem.find_by(customer_id: current_customer.id)
+           @order = Order.new
+           @addresses = Address.where(customer_id: current_customer.id)
+        else
+          flash[:notice] = "商品カートが空です"
+          redirect_to cart_items_path
+        end
+
+
+
+
 
     end
 

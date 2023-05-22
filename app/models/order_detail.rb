@@ -15,5 +15,7 @@ class OrderDetail < ApplicationRecord
   #def sum
    #with_tax_price * amount
   #end
+  
+  
 
 end

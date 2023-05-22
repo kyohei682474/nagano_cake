@@ -1,6 +1,6 @@
 <div class=" bg-secondary" style="margin-left: 50px; font-size: 20px; width:130px;" >注文履歴詳細</div>
 
-   <table>
+   <table >
      <tr>
       <td class="col-2 font-weight-bold">購入者</td>
       <td class="col-4"><%= link_to @order.customer.last_name+@order.customer.first_name,admin_order_path(@order.id) %></td>
@@ -35,7 +35,7 @@
      <%end%>
    </table>
    <div class="col">
-    <table class="table">
+    <table class="table" style="width:100px;">
      <tr class="table-dark">
       <td class="col-2 font-weight-bold">商品名</td>
       <td class="col-3 font-weight-bold">単価（税込）</td>
@@ -44,30 +44,26 @@
       <td class="col-3 font-weight-bold">制作ステータス</td>
       <td class=></td>
      </tr>
-
+      <tr>
     <% total=0 %>
     <% @order.order_details.each do |order_detail| %>
-      <tr>
-      <td><%=order_detail.item.name%></td>
-      <td><%=order_detail.item.with_tax_price%></td>
-      <td><%=order_detail.amount%></td>
-      <td><%=order_detail.item.with_tax_price*order_detail.amount %></td>
-        <% total += (order_detail.item.with_tax_price*order_detail.amount)  %>
-       <!--<td class="ps-1">商品合計</td>-->
+
+      <td class"col-2"><%=order_detail.item.name%></td>
+      <td class"col-2"><%=order_detail.item.with_tax_price%></td>
+      <td class"col-2"><%=order_detail.amount%></td>
+      <td  class"col-2"><%=order_detail.item.with_tax_price*order_detail.amount %></td>
+
       <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
-      <td><%= f.select :making_status,OrderDetail.making_statuses.keys.map{|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %></td>
-      <td><%=f.submit"更新",class:'btn btn-success'%></td>
-        <%end%>
-
+        <td class"col-2"><%= f.select :making_status,OrderDetail.making_statuses.keys.map{|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %></td>
+        <td class"col-2"><%=f.submit"更新",class:'btn btn-success'%></td>
       </tr>
-      <%end%>
      </table>
-    <!--</table>-->
-
+    </table>
 
 
     <table>
       <tr>
+       <% total += (order_detail.item.with_tax_price*order_detail.amount)  %>
        <td class="ps-1">商品合計</td>
        <td></td>
        <td></td>
@@ -82,7 +78,7 @@
        <td></td>
        <td></td>
        <td></td>
-       <td class="ps-1"><%= @order.shipping_fee %>円</td>
+       <td class="ps-1"><%= order_detail.order.shipping_fee %>円</td>
       </tr>
 
        <tr>
@@ -91,10 +87,10 @@
        <td></td>
        <td></td>
        <td></td>
-       <td class="ps-1 font-weight-bold"><%= total.to_i+@order.shipping_fee%>円</td>
+       <td class="ps-1 font-weight-bold"><%= total.to_i+order_detail.order.shipping_fee%>円</td>
       </tr>
 
+       <%end%>
 
-
-
+    <%end%>
   </div>

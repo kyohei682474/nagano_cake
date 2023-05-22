@@ -38,9 +38,10 @@ class Public::CartItemsController < ApplicationController
 		elsif @cart_item.save
 			flash[:notice] = "New Item was successfully added to cart."
 			redirect_to cart_items_path
-		else
 
-			render 'end_users/items/show'
+		else @cart_item == nill
+            render index
+# 			render 'end_users/items/show'
 		end
 
     end
