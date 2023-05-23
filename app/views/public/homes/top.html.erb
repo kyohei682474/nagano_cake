@@ -32,10 +32,15 @@
         <tr>
             <td><%= item.name %></td>
         </tr>
+
+         <tr>
+            <td>¥<%= item.price %></td>
+        </tr>
     </table>
 
 <% end %>
   </div>
+  <%=link_to"全ての商品を見に行く",items_path mehod: :get  %>
 </div>
 
 

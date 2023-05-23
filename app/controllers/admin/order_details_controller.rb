@@ -3,19 +3,22 @@ class Admin::OrderDetailsController < ApplicationController
 
     def update
         order_detail = OrderDetail.find(params[:id])
-        order = Order.find(params[:id])#ここのorderの定義のparamsの中身がおかしい
+        order = Order.find(order_detail.order_id)
         order_details = order.order_details.all
 
-        is_updated = true
-     if order_detail.update(order_detail_params)
-        order.update(status: 2) if order_detail.making_status == "in_production"
-       order_details.each do |order_detail|
-        if order_detail.making_status != "production_complete"
-           is_updated = false
+
+
+
+        order_detail.update(order_detail_params)
+        if
+           order_detail.making_status == "production"
+           order.update(status:2)
+        elsif
+           order_details.each do |order_detail|
+           order_detail.making_status = "production_completed"
+           end
+           order.update(status:3)
         end
-       end
-        order.update(status: 3) if is_updated
-     end
         redirect_to admin_order_path(order_detail.order.id)
     end
 
