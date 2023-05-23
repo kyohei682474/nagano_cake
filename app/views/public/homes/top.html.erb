@@ -15,6 +15,31 @@
       </div>
     </div>
 
+<div>
+    <h2>新商品一覧</h2>
+     <div class="row">
+    <% @items.each do |item| %>
+
+    <table>
+        <tr>
+         <td><%= link_to  item_path(item.id) do %>
+             <%= image_tag item.image, size: "200x200" %>
+             <% end %>
+         </td>
+
+        </tr>
+
+        <tr>
+            <td><%= item.name %></td>
+        </tr>
+    </table>
+
+<% end %>
+  </div>
+</div>
+
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
