@@ -15,7 +15,7 @@
       </div>
     </div>
 
-<div>
+<div style="margin-left:30px;">
     <h2>新商品一覧</h2>
      <div class="row">
     <% @items.each do |item| %>
@@ -40,7 +40,7 @@
 
 <% end %>
   </div>
-  <%=link_to"全ての商品を見に行く",items_path mehod: :get  %>
+  <%=link_to"全ての商品を見に行く",items_path ,mehod: :get  %>
 </div>
 
 
